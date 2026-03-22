@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+/* ── CODA design tokens ─────────────────────────────────── */
+:root {
+  --black:   #000000;
+  --bg:      #0A0A0A;
+  --surface: #141414;
+  --lift:    #1E1E1E;
+  --border:  #282828;
+  --border2: #383838;
+
+  --text:    #F0EDE6;
+  --muted:   #888888;
+  --faint:   #444444;
+
+  --amber:   #C8924A;
+  --amber2:  rgba(200,146,74,0.15);
+
+  --serif: 'DM Serif Display', 'Noto Serif TC', Georgia, serif;
+  --sans:  'DM Sans', 'Noto Sans TC', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 30px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--amber2); color: var(--amber); }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); }
+
+/* ── Wrap ───────────────────────────────────────────────── */
+.wrap {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+@media (min-width: 768px)  { .wrap { padding-left: 3rem;   padding-right: 3rem;   } }
+@media (min-width: 1280px) { .wrap { padding-left: 4.5rem; padding-right: 4.5rem; } }
+
+/* ── Divider ────────────────────────────────────────────── */
+.rule { border-top: 1px solid var(--border); }
+
+/* ── Event row ──────────────────────────────────────────── */
+.event-row {
+  display: grid;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.12s;
+  text-decoration: none;
+  color: inherit;
+}
+.event-row:hover { background: var(--surface); margin-left: -1.5rem; margin-right: -1.5rem; padding-left: 1.5rem; padding-right: 1.5rem; }
+@media (min-width: 768px) {
+  .event-row:hover { margin-left: -3rem; margin-right: -3rem; padding-left: 3rem; padding-right: 3rem; }
+}
+@media (min-width: 1280px) {
+  .event-row:hover { margin-left: -4.5rem; margin-right: -4.5rem; padding-left: 4.5rem; padding-right: 4.5rem; }
+}
+
+/* ── Btn ────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--sans);
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 11px 24px;
+  border: 1px solid var(--border2);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.15s;
+  text-decoration: none;
+}
+.btn:hover { border-color: var(--text); }
+
+.btn-amber {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: var(--black);
+}
+.btn-amber:hover { background: #b57f3e; border-color: #b57f3e; }
+
+/* ── Field ──────────────────────────────────────────────── */
+.field {
+  width: 100%;
+  padding: 11px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 28px;
+  outline: none;
+  transition: border-color 0.15s;
+  border-radius: 0;
+}
+.field:focus { border-color: var(--amber); }
+.field::placeholder { color: var(--faint); }
+
+/* ── Tag ────────────────────────────────────────────────── */
+.tag {
+  display: inline-block;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border: 1px solid var(--border2);
+  color: var(--muted);
+}
+.tag-amber {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+/* ── Page enter ─────────────────────────────────────────── */
+.page-in { animation: fadeIn 0.2s ease both; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ── Ticket option ──────────────────────────────────────── */
+.ticket-opt {
+  padding: 16px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color 0.12s;
+}
+.ticket-opt:hover  { border-color: var(--border2); }
+.ticket-opt.active { border-color: var(--amber); }
